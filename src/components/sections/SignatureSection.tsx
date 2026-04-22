@@ -10,13 +10,13 @@ interface SignatureSectionProps {
 }
 
 export default function SignatureSection({ navigate, dateStr, timeStr }: SignatureSectionProps) {
-  const [form, setForm] = useState({ fullName: "", email: "", agreed1: false, agreed2: false, agreed3: false });
+  const [form, setForm] = useState({ fullName: "", discord: "", agreed1: false, agreed2: false, agreed3: false });
   const [signed, setSigned] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
   const canSign =
-    form.fullName.trim().length >= 3 &&
-    form.email.includes("@") &&
+    form.fullName.trim().length >= 2 &&
+    form.discord.trim().length >= 2 &&
     form.agreed1 &&
     form.agreed2 &&
     form.agreed3;
@@ -51,22 +51,22 @@ export default function SignatureSection({ navigate, dateStr, timeStr }: Signatu
 
           <div className="space-y-6 mb-10">
             <div>
-              <label className="block text-xs tracking-[0.15em] uppercase text-[#6B6B68] mb-2">Фамилия Имя Отчество *</label>
+              <label className="block text-xs tracking-[0.15em] uppercase text-[#6B6B68] mb-2">Имя *</label>
               <input
                 type="text"
-                placeholder="Иванов Иван Иванович"
+                placeholder="Иван"
                 value={form.fullName}
                 onChange={(e) => setForm({ ...form, fullName: e.target.value })}
                 className="w-full border border-[#E8E8E4] bg-transparent px-4 py-3 text-sm focus:outline-none focus:border-[#1A1A18] transition-colors placeholder-[#C8C8C4]"
               />
             </div>
             <div>
-              <label className="block text-xs tracking-[0.15em] uppercase text-[#6B6B68] mb-2">Электронная почта *</label>
+              <label className="block text-xs tracking-[0.15em] uppercase text-[#6B6B68] mb-2">Ссылка на Discord *</label>
               <input
-                type="email"
-                placeholder="ivan@example.ru"
-                value={form.email}
-                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                type="text"
+                placeholder="https://discord.com/users/..."
+                value={form.discord}
+                onChange={(e) => setForm({ ...form, discord: e.target.value })}
                 className="w-full border border-[#E8E8E4] bg-transparent px-4 py-3 text-sm focus:outline-none focus:border-[#1A1A18] transition-colors placeholder-[#C8C8C4]"
               />
             </div>
@@ -135,7 +135,7 @@ export default function SignatureSection({ navigate, dateStr, timeStr }: Signatu
             </div>
             <h2 className="font-cormorant text-4xl font-semibold mb-3">Соглашение подписано</h2>
             <p className="text-[#6B6B68] text-sm mb-8 leading-relaxed">
-              Электронная подпись принята. Уведомление направлено на {form.email}
+              Электронная подпись принята.
             </p>
 
             <div className="border-t border-[#E8E8E4] pt-8 space-y-3 text-left">
@@ -144,8 +144,8 @@ export default function SignatureSection({ navigate, dateStr, timeStr }: Signatu
                 <span className="font-medium">{form.fullName}</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-[#6B6B68]">Email</span>
-                <span>{form.email}</span>
+                <span className="text-[#6B6B68]">Discord</span>
+                <span>{form.discord}</span>
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-[#6B6B68]">Дата</span>
