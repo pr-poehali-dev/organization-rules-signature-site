@@ -1,6 +1,6 @@
 import Icon from "@/components/ui/icon";
 
-type Section = "home" | "agreement" | "signature" | "contacts";
+type Section = "home" | "agreement" | "signature";
 
 interface SiteHeaderProps {
   activeSection: Section;
@@ -27,7 +27,6 @@ export default function SiteHeader({ activeSection, scrolled, navigate, logoUrl 
               ["home", "Главная"],
               ["agreement", "Соглашение"],
               ["signature", "Подписание"],
-              ["contacts", "Контакты"],
             ] as [Section, string][]
           ).map(([s, label]) => (
             <button

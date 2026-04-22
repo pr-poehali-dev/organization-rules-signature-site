@@ -4,9 +4,7 @@ import SiteHeader from "@/components/layout/SiteHeader";
 import HomeSection from "@/components/sections/HomeSection";
 import AgreementSection from "@/components/sections/AgreementSection";
 import SignatureSection from "@/components/sections/SignatureSection";
-import ContactsSection from "@/components/sections/ContactsSection";
-
-type Section = "home" | "agreement" | "signature" | "contacts";
+type Section = "home" | "agreement" | "signature";
 
 const LOGO_URL = "https://cdn.poehali.dev/projects/80a58ff0-ba56-4df0-a182-6eba4774b946/bucket/fafb2052-8765-455e-a4b3-3ccf609fb0be.png";
 
@@ -48,9 +46,7 @@ export default function Index() {
         {activeSection === "signature" && (
           <SignatureSection navigate={navigate} dateStr={dateStr} timeStr={timeStr} />
         )}
-        {activeSection === "contacts" && (
-          <ContactsSection navigate={navigate} />
-        )}
+
       </main>
 
       {/* Footer */}
@@ -63,7 +59,7 @@ export default function Index() {
           <div className="flex gap-6 text-xs text-[#6B6B68]">
             <button onClick={() => navigate("agreement")} className="hover:text-[#1A1A18] transition-colors">Соглашение</button>
             <button onClick={() => navigate("signature")} className="hover:text-[#1A1A18] transition-colors">Подписание</button>
-            <button onClick={() => navigate("contacts")} className="hover:text-[#1A1A18] transition-colors">Контакты</button>
+
           </div>
           <div className="flex items-center gap-2 text-xs text-[#9A9A97]">
             <Icon name="ShieldCheck" size={13} />

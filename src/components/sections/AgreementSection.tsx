@@ -1,6 +1,6 @@
 import Icon from "@/components/ui/icon";
 
-type Section = "home" | "agreement" | "signature" | "contacts";
+type Section = "home" | "agreement" | "signature";
 
 const LAWS = [
   { code: "149-ФЗ", title: "Об информации, информационных технологиях и о защите информации" },
@@ -100,12 +100,7 @@ export default function AgreementSection({ navigate, dateStr }: AgreementSection
             <Icon name="PenLine" size={16} />
             Перейти к подписанию
           </button>
-          <button
-            onClick={() => navigate("contacts")}
-            className="flex items-center gap-2 border border-[#E8E8E4] text-[#6B6B68] px-6 py-3 hover:border-[#1A1A18] hover:text-[#1A1A18] transition-colors text-sm"
-          >
-            Задать вопрос
-          </button>
+
         </div>
       </div>
     </div>
